@@ -19,11 +19,6 @@ terraform {
       version = ">= 3.0.0"
     }
 
-    random = {
-      source  = "hashicorp/random"
-      version = ">= 3.0.0"
-    }
-
     rke = {
       source  = "rancher/rke"
       version = ">= 1.1.6"
@@ -33,6 +28,19 @@ terraform {
       source  = "hashicorp/tls"
       version = ">= 3.0.0"
     }
+  }
+
+  # Requires the following environment variables:
+
+  # AWS_ACCESS_KEY_ID
+  # AWS_SECRET_ACCESS_KEY
+
+  backend "s3" {
+    bucket         = "morsley-io-terraform-backend-states"
+    key            = "rancher/infrastructure"
+    region         = "eu-west-2"
+    dynamodb_table = "morsley-io-terraform-state-locks"
+    encrypt        = true
   }
 
 }

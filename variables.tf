@@ -39,6 +39,11 @@ variable "node_settings" {
   default = []
 }
 
+variable "bucket_prefix" {
+  description = "An optional prefix for the bucket."
+  type        = string
+}
+
 ########################################################################################################################
 # RANCHER
 ########################################################################################################################
@@ -49,12 +54,12 @@ variable "name" {
   description = "Name for deployment."
 }
 
+variable "sub_domain" {
+  type    = string
+  default = "rancher"
+}
+
 variable "domain" {
   type    = string
   default = "morsley.io"
-}
-
-variable "route_53_domain" {
-  type    = string
-  default = "" # Leave blank if this is the same as the above domain.
 }

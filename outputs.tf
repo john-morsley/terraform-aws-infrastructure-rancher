@@ -12,15 +12,17 @@
 ########################################################################################################################
 
 output "cluster_network_load_balancer_url" {
-  value = module.rke-cluster.network-load_balancer_url
+  value = module.rke-cluster.network_load_balancer_url
 }
 
-output "cluster_kubeconfig_yaml" {
-  value = module.rke-cluster.kubeconfig_yaml
-}
+//output "cluster_kubeconfig_yaml" {
+//  value = module.rke-cluster.kubeconfig_yaml
+//}
 
 output "cluster_export_kubeconfig_command" {
   value = module.rke-cluster.export_kubeconfig_command
 }
 
-
+output "cluster_bucket_name" {
+  value = module.s3_bucket.name
+}
