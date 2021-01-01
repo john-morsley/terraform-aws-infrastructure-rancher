@@ -1,3 +1,13 @@
+/*
+ _______                   __
+|__   __|                 / _|
+   | | ___ _ __ _ __ __ _| |_ ___  _ __ _ __ ___
+   | |/ _ \ '__| '__/ _` |  _/ _ \| '__| '_ ` _ \
+   | |  __/ |  | | | (_| | || (_) | |  | | | | | |
+   |_|\___|_|  |_|  \__,_|_| \___/|_|  |_| |_| |_|
+
+                                                */
+
 terraform {
 
   required_version = ">= 0.14"
@@ -19,6 +29,11 @@ terraform {
       version = ">= 3.0.0"
     }
 
+    random = {
+      source  = "hashicorp/random"
+      version = ">= 3.0.0"
+    }
+
     rke = {
       source  = "rancher/rke"
       version = ">= 1.1.6"
@@ -28,6 +43,7 @@ terraform {
       source  = "hashicorp/tls"
       version = ">= 3.0.0"
     }
+
   }
 
   # Requires the following environment variables:

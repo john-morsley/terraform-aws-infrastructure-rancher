@@ -1,9 +1,12 @@
-#     __      __        _       _     _           
-#     \ \    / /       (_)     | |   | |          
-#      \ \  / /_ _ _ __ _  __ _| |__ | | ___  ___ 
-#       \ \/ / _` | '__| |/ _` | '_ \| |/ _ \/ __|
-#        \  / (_| | |  | | (_| | |_) | |  __/\__ \
-#         \/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
+/*
+__      __        _       _     _           
+\ \    / /       (_)     | |   | |          
+ \ \  / /_ _ _ __ _  __ _| |__ | | ___  ___ 
+  \ \/ / _` | '__| |/ _` | '_ \| |/ _ \/ __|
+   \  / (_| | |  | | (_| | |_) | |  __/\__ \
+    \/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
+
+                                          */
 
 ########################################################################################################################
 # VPC
@@ -21,15 +24,15 @@ cluster_name = "rancher"
 node_settings = [
   {
     role          = ["controlplane", "etcd", "worker"]
-    instance_type = "t2.xlarge"
+    instance_type = "t2.large"
   },
   {
     role          = ["controlplane", "etcd", "worker"]
-    instance_type = "t2.xlarge"
+    instance_type = "t2.large"
   },
   {
     role          = ["controlplane", "etcd", "worker"]
-    instance_type = "t2.xlarge"
+    instance_type = "t2.large"
   }
 ]
 bucket_prefix = "morsley-io"
@@ -38,6 +41,5 @@ bucket_prefix = "morsley-io"
 # RANCHER
 ########################################################################################################################
 
-name       = "rancher"
 sub_domain = "rancher"
 domain     = "morsley.io"

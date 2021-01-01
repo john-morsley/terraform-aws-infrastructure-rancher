@@ -1,6 +1,14 @@
-locals {
+/*
+ _                     _
+| |                   | |
+| |     ___   ___ __ _| |___
+| |    / _ \ / __/ _` | / __|
+| |___| (_) | (_| (_| | \__ \
+|______\___/ \___\__,_|_|___/
 
-  //route_53_domain = length(var.route_53_domain) > 0 ? var.route_53_domain : var.domain
+                           */
+
+locals {
 
   bucket_name = "${var.bucket_prefix}-${var.cluster_name}-cluster"
 

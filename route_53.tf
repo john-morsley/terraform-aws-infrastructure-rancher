@@ -1,3 +1,13 @@
+/*
+ _____             _         _____ ____  
+|  __ \           | |       | ____|___ \ 
+| |__) |___  _   _| |_ ___  | |__   __) |
+|  _  // _ \| | | | __/ _ \ |___ \ |__ < 
+| | \ \ (_) | |_| | ||  __/  ___) |___) |
+|_|  \_\___/ \__,_|\__\___| |____/|____/ 
+                                         
+                                        */
+
 data "aws_route53_zone" "morsley-io" {
 
   name         = var.domain
@@ -11,14 +21,10 @@ resource "aws_route53_record" "a-record" {
   name    = var.sub_domain
   type    = "A"
 
-  #ttl     = 300
-  #records = [module.rancher-node-1-ec2.public_ip]
-  #records = [ aws_lb.this.dns_name ]
-
   alias {
     evaluate_target_health = false
-    name                   = module.rke-cluster.network_load_balancer_url     // WAS: aws_lb .this.dns_name
-    zone_id                = module.rke-cluster.network_load_balancer_zone_id // WAS: aws_lb.this.zone_id
+    name                   = module.rke-cluster.network_load_balancer_url
+    zone_id                = module.rke-cluster.network_load_balancer_zone_id
   }
 
 }

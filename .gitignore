@@ -31,3 +31,7 @@ override.tf.json
 .terraform.lock.hcl
 
 .idea
+
+# RKE
+
+terraform-provider-rke-tmp-*/
