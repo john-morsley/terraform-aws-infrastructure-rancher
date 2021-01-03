@@ -9,34 +9,26 @@
                                                                                    */
 
 ########################################################################################################################
-# RKE - RANCHER KUBERNETES ENGINE
+# EKS - ELASTIC KUBERNETES SERVICE
 ########################################################################################################################
 
-module "rke-cluster" {
+module "cluster" {
 
-  source = "./../terraform-aws-kubernetes-rke"
+  source = "./../terraform-aws-kubernetes-eks-module"
   #source = "john-morsley/kubernetes-rke/aws"
 
-  vpc_id                  = module.vpc.id
-  public_subnet_ids       = module.vpc.public_subnet_ids
-  availability_zone_names = data.aws_availability_zones.available.names
+  vpc_id            = module.vpc.id
+  public_subnet_ids = module.vpc.public_subnet_ids
+  //availability_zone_names = data.aws_availability_zones.available.names
 
   cluster_name = var.cluster_name
 
   bucket_name = module.s3_bucket.name
 
-  node_settings = var.node_settings
+  //node_settings = var.node_settings
+
+  domain_name     = var.domain
+  sub_domain_name = var.sub_domain
+  cidr_range      = var.vpc_cidr
 
 }
-
-########################################################################################################################
-# EKS - ELASTIC KUBERNETES SERVICE 
-########################################################################################################################
-
-# ToDo --> Replace cluster with an AWS EKS cluster. 
-
-########################################################################################################################
-# K3S 
-########################################################################################################################
-
-# ToDo --> Replace cluster with a K3S cluster.

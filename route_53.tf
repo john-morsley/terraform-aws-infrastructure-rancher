@@ -8,12 +8,16 @@
                                          
                                         */
 
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_zone
+
 data "aws_route53_zone" "morsley-io" {
 
   name         = var.domain
   private_zone = false
 
 }
+
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record
 
 resource "aws_route53_record" "a-record" {
 
@@ -23,14 +27,10 @@ resource "aws_route53_record" "a-record" {
 
   alias {
     evaluate_target_health = false
-    name                   = module.rke-cluster.network_load_balancer_url
-    zone_id                = module.rke-cluster.network_load_balancer_zone_id
+    name                   = module.cluster.load_balancer_url
+    zone_id                = module.cluster.load_balancer_zone_id
   }
 
-}
-
-output "route_53_name_servers" {
-  value = data.aws_route53_zone.morsley-io.name_servers
 }
 
 /*
