@@ -21,20 +21,34 @@ public_subnet_cidrs  = ["10.0.2.0/24", "10.0.4.0/24", "10.0.6.0/24"]
 ########################################################################################################################
 
 cluster_name = "rancher"
-node_settings = [
+
+# RKE
+//node_settings = [
+//  {
+//    role          = ["controlplane", "etcd", "worker"]
+//    instance_type = "t2.large"
+//  },
+//  {
+//    role          = ["controlplane", "etcd", "worker"]
+//    instance_type = "t2.large"
+//  },
+//  {
+//    role          = ["controlplane", "etcd", "worker"]
+//    instance_type = "t2.large"
+//  }
+//]
+# EKS
+node_group_settings = [
   {
-    role          = ["controlplane", "etcd", "worker"]
-    instance_type = "t2.large"
-  },
-  {
-    role          = ["controlplane", "etcd", "worker"]
-    instance_type = "t2.large"
-  },
-  {
-    role          = ["controlplane", "etcd", "worker"]
-    instance_type = "t2.large"
+    name          = "on-demand-1"
+    minimum_size  = 1
+    desired_size  = 3
+    maximum_size  = 5
+    type          = "on-demand"
+    instance_type = "t2.xlarge"
   }
 ]
+
 bucket_prefix = "morsley-io"
 
 ########################################################################################################################

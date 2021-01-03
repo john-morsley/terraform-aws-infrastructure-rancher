@@ -25,7 +25,7 @@ module "cluster" {
 
   bucket_name = module.s3_bucket.name
 
-  //node_settings = var.node_settings
+  node_group_settings = var.node_group_settings
 
   domain_name     = var.domain
   sub_domain_name = var.sub_domain

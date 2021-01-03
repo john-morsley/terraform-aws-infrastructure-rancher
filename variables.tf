@@ -32,12 +32,28 @@ variable "cluster_name" {
   type = string
 }
 
+# RKE
 variable "node_settings" {
   type = list(
     object({
       role          = list(string)
       instance_type = string
     })
+  )
+  default = []
+}
+
+# EKS
+variable "node_group_settings" {
+  type = list(
+  object({
+    name          = string
+    minimum_size  = number
+    desired_size  = number
+    maximum_size  = number
+    type          = string
+    instance_type = string
+  })
   )
 }
 
